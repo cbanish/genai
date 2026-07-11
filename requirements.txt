@@ -1,0 +1,8 @@
+langchain==1.3.7
+langchain-mistralai
+langchain-community
+langchain-chroma
+python-dotenv
+requests
+chromadb
+pypdf
