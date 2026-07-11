@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 import os
 from llama_index.retrievers.bedrock import AmazonKnowledgeBasesRetriever
-from llama_index.llms.openai import OpenAI
+from llama_index.llms.mistralai import MistralAI
 from llama_index.core.query_engine import RetrieverQueryEngine
 from llama_index.core.tools import QueryEngineTool
 from llama_index.core.agent.workflow import ReActAgent
@@ -15,7 +15,10 @@ retriever = AmazonKnowledgeBasesRetriever(
         knowledge_base_id=os.getenv("BEDROCK_KNOWLEDGE_BASE_ID"),
         retrieval_config={"vectorSearchConfiguration": {"numberOfResults": 3}},
     )
-llm = OpenAI(model=os.getenv("OPENAI_MODEL"))
+llm = MistralAI(
+     model=os.getenv("MISTRAL_MODEL", "mistral-large-latest"),
+    api_key=os.getenv("MISTRAL_API_KEY"),
+ )
 
 _knowledge_base_tool = QueryEngineTool.from_defaults(
     query_engine=RetrieverQueryEngine(retriever=retriever),

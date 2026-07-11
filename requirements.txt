@@ -6,3 +6,9 @@ python-dotenv
 requests
 chromadb
 pypdf
+gradio==5.49.1
+boto3==1.40.59
+python-dotenv==1.1.1
+llama-index==0.12.52
+llama-index-llms-mistralai==0.3.3
+llama-index-retrievers-bedrock==0.3.0
